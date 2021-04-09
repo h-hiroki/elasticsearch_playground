@@ -1,0 +1,36 @@
+version: '3'
+
+volumes:
+  # mysql-db:
+  #   driver: local
+  es-data:
+    driver: local
+
+services:
+  # mysql:
+  #   image: mysql:5.7
+  #   volumes:
+  #     - mysql-db:/var/lib/mysql
+  #     - ./mysql/init:/docker-entrypoint-initdb.d
+  #     - ./mysql/etc:/etc/mysql/conf.d
+  #   ports:
+  #     - 3308:3306
+  #   environment:
+  #     - MYSQL_DATABASE=laravel_elasticsearch
+  #     - MYSQL_ROOT_PASSWORD=password01
+
+  elasticsearch:
+    build: ./elasticsearch
+    volumes:
+      - es-data:/usr/share/elasticsearch/data
+    environment:
+      - discovery.type=single-node
+      - cluster.name=docker-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - "9200:9200"
