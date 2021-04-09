@@ -1,2 +1,2 @@
 # elasticsearch_playground
- 遊び場！
+遊び場！
