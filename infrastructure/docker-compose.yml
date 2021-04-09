@@ -1,24 +1,10 @@
 version: '3'
 
 volumes:
-  # mysql-db:
-  #   driver: local
   es-data:
     driver: local
 
 services:
-  # mysql:
-  #   image: mysql:5.7
-  #   volumes:
-  #     - mysql-db:/var/lib/mysql
-  #     - ./mysql/init:/docker-entrypoint-initdb.d
-  #     - ./mysql/etc:/etc/mysql/conf.d
-  #   ports:
-  #     - 3308:3306
-  #   environment:
-  #     - MYSQL_DATABASE=laravel_elasticsearch
-  #     - MYSQL_ROOT_PASSWORD=password01
-
   elasticsearch:
     build: ./elasticsearch
     volumes:
@@ -34,3 +20,8 @@ services:
         hard: -1
     ports:
       - "9200:9200"
+
+  kibana:
+      build: ./kibana
+      ports:
+          - 5601:5601

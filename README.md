@@ -1,7 +1,12 @@
 # elasticsearch_playground
 遊び場！
 
-# any command
+## kibana
+```
+http://localhost:5601/
+```
+
+## any command for Elasticsearch
 
 サーバ起動確認
 ```sh
