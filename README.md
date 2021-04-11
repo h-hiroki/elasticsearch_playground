@@ -103,4 +103,16 @@ curl -X POST -H "Content-Type: application/json" http://localhost:9200/houses/_s
 }
 '
 
+# 範囲指定
+curl -X POST -H "Content-Type: application/json" http://localhost:9200/houses/_search?pretty -d '
+{
+    "query": {
+        "range": {
+            "stations.minutes_on_foot": {
+                "lte": 2
+            }
+        }
+    }
+}
+'
 ```
