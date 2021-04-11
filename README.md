@@ -17,3 +17,14 @@ curl http://localhost:9200
 ```sh
 curl http://localhost:9200/_nodes/plugins\?pretty
 ```
+
+インデックス作成
+```sh
+curl -X PUT http://localhost:9200/houses/
+```
+
+インデックス確認
+```sh
+curl http://localhost:9200/houses/\?pretty
+```
+
