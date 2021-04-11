@@ -91,4 +91,16 @@ curl -X POST -H "Content-Type: application/json" http://localhost:9200/houses/_s
     }
 }
 '
+
+# ソート
+curl -X POST -H "Content-Type: application/json" http://localhost:9200/houses/_search?pretty -d '
+{
+    "sort": [
+        {
+            "stations.minutes_on_foot": "desc"
+        }
+    ]
+}
+'
+
 ```
