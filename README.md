@@ -116,3 +116,8 @@ curl -X POST -H "Content-Type: application/json" http://localhost:9200/houses/_s
 }
 '
 ```
+
+ドキュメント削除
+```sh
+curl -X DELETE http://localhost:9200/houses/_doc/vp7swHgBj1hy2Jiv_Qdf?pretty
+```
