@@ -1,0 +1,26 @@
+{
+    "settings": {
+        "index": {
+            "analysis": {
+                "analyzer": {
+                    "ja_analyzer": {
+                        "type": "custom",
+                        "tokenizer": "kuromoji_tokenizer"
+                    }
+                }
+            }
+        }
+    },
+    "mappings": {
+        "properties": {
+            "description": {
+                "type": "text",
+                "analyzer": "ja_analyzer"
+            },
+            "address": {
+                "type": "completion",
+                "analyzer": "ja_analyzer"
+            }
+        }
+    }
+}

@@ -7,7 +7,7 @@ http://localhost:5601/
 ```
 
 ## any command for Elasticsearch
-
+### util
 サーバ起動確認
 ```sh
 curl http://localhost:9200
@@ -18,9 +18,20 @@ curl http://localhost:9200
 curl http://localhost:9200/_nodes/plugins?pretty
 ```
 
+### index
+インデックス削除
+```sh
+curl -X DELETE http://localhost:9200/houses/
+```
+
 インデックス作成
 ```sh
+# kuromojiの設定をしない場合
 curl -X PUT http://localhost:9200/houses/
+
+# kuromojiの設定を行う場合
+# mappingsのtypeの宣言が不要になっていることに注意してね。
+curl -X PUT -H "Content-Type: application/json" http://localhost:9200/houses/?pretty -d @assets/data/kuromoji_mapping.json
 ```
 
 インデックス確認
@@ -28,6 +39,7 @@ curl -X PUT http://localhost:9200/houses/
 curl http://localhost:9200/houses/?pretty
 ```
 
+### documents
 ドキュメント追加
 ```sh
 # Typeは使わなくなりました。typeの箇所は_docに変えます。
@@ -43,6 +55,17 @@ curl -X POST -H "Content-Type: application/json" http://localhost:9200/houses/_s
     "query": {
         "match": {
             "name": "カイバヒルズ"
+        }
+    }
+}
+'
+
+# 住所で検索
+curl -X POST -H "Content-Type: application/json" http://localhost:9200/houses/_search?pretty -d '
+{
+    "query": {
+        "match": {
+            "address": "東京"
         }
     }
 }
