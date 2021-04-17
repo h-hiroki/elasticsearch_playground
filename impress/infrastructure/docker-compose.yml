@@ -20,3 +20,8 @@ services:
         hard: -1
     ports:
       - "9200:9200"
+
+  kibana:
+    build: ./kibana
+    ports:
+        - 5601:5601
