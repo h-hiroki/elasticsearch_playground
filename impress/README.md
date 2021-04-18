@@ -45,3 +45,9 @@ curl -XPUT "http://localhost:9200/my_index/_doc/1" -H 'Content-Type: application
 ```sh
 curl -XPOST "http://localhost:9200/my_index/_update/1" -H 'Content-Type: application/json' -d'{  "doc": {    "message": "Only message was updated."  }}'
 ```
+
+### Delete
+- ID指定でドキュメントを削除する
+```sh
+curl -XDELETE "http://localhost:9200/my_index/_doc/1"
+```
